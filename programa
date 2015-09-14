@@ -1,0 +1,105 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<conio.h>
+menu(){
+char c;
+FILE*flujo;
+flujo=fopen("menu.txt","r");
+c=fgetc(flujo);
+while (c!=EOF){
+    printf("%c",c);
+    c=fgetc(flujo);
+}
+}
+quiere_mas(){
+	printf("\nDesea ordenar algo mas? \nSi=1 \nNo=2\n");
+}
+struct orden{
+
+    int clave;
+    char descripcion[100];
+	};
+main()
+{
+	FILE *tic;
+	int a,x,op,i,n,total,cont,m;
+	int precio[100];
+	int product[100];
+    char t1[]="Torta cubana",t2[]="Torta jamon",t3[]="Torta especial",t4[]="refresco";
+    char  *p1,*p2,*p3,*p4;
+    p1=&t1;
+    p2=&t2;
+    p3=&t3;
+    p4=&t4;
+    total=0;
+    a=0;
+    i=0;
+    n=0;
+
+	do {
+            printf("\n");
+            menu();
+            scanf("%d",&x);
+
+	  switch (x){
+
+		  	case 1:
+		  	    total=total+45;
+		  	    precio[i]=45;
+		  	    product[i]=p1;
+		  	    break;
+			case 2:
+			    total=total+15;
+			    precio[i]=15;
+			    product[i]=p2;
+			    break;
+		    case 3:
+		        total=total+55;
+		        precio[i]=55;
+		        product[i]=p3;
+		        break;
+		    case 4:
+		        total=total+10;
+		        precio[i]=10;
+		        product[i]=p4;
+            	break;
+            case 5:
+            	return 0;
+            	break;
+		    default:
+			  printf("Error\n\n");
+			  system("tortasdejamon.exe");
+		}
+		quiere_mas();
+		scanf("%d",&op);
+		a=op;
+		n=n+1;
+		i=i+1;
+		if(i>=1){
+            system("cls");
+			printf("\nOrden:");
+            for(cont=0;cont<n;cont++){
+            printf("\n%s\t%d",product[cont],precio[cont]);
+            }
+            printf("\n");
+            }
+
+	}while (a<2);
+	printf("\n\nEl total de su compra  es: %d pesos\n\n",total);
+	printf("\n\nSu pago gracias:");
+	scanf("%d",&m);
+	printf("\n\nEl cambio es: %d",m-total);
+	printf("\n\nGracias por su compra");
+	getch();
+	tic=fopen("orden.txt","a");
+
+	for(cont=0;cont<n;cont++){
+                fprintf(tic,"\n%d\t%s",precio[cont],product[cont]);
+
+            }
+            fprintf(tic,"\nTotal: %d pesos\n\n",total);
+    fclose(tic);
+	system("cls");
+	system("tortasdejamon.exe");
+}
+
