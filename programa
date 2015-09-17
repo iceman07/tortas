@@ -1,3 +1,11 @@
+/* Para visualizar correctamente el programa se debe anexar un archivo de nombre menu.txt con el siguiente contenido:
+Menu:
+1.Torta cubana - $45
+2.Torta jamon - $15
+3.Torta especial - $55
+4.Refresco - $10
+5.Salir */
+
 #include<stdio.h>
 #include<stdlib.h>
 #include<conio.h>
